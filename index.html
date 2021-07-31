@@ -1,15 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/main.css">
-  <script src="js/main.js"></script>
-  <title>Pig Game | Simple Dice Game</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="js/main.js"></script>
+    <title>Pig Game | Simple Dice Game</title>
+  </head>
+  <body>
+    <header>
+      <h1>The game of Pig, with DnD twist</h1>
+      <p>first player gets 500 points wins</p>
+    </header>
+
+    <main>
+      <section class="player-wrapper">
+        <h2>Player 1 score</h2>
+        <p id="player-score-1">0</p>
+        <div>
+          <h3>Current score</h3>
+          <p id="current-score-1">0</p>
+        </div>
+      </section>
+
+      <section class="player-wrapper">
+        <h2>Player 2 score</h2>
+        <p id="player-score-2">0</p>
+        <div>
+          <h3>Current score</h3>
+          <p id="current-score-2">0</p>
+        </div>
+      </section>
+    </main>
+
+    <div class="commands">
+      <button class="btn btn-new-game">New Game</button>
+      <button class="btn btn-roll">Roll</button>
+      <button class="btn btn-roll">Hold</button>
+    </div>
+  </body>
 </html>
