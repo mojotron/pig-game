@@ -10,30 +10,10 @@
   let currentScore = 0;
   let currentPlayer = 1;
   //Helper functions
-  const rollDice = () => Math.trunc(Math.random() * 6) + 1;
-
-  const rollEvaluate = function (roll) {
-    if (roll === 1) {
-      //set player score to 0
-      //current score to 0
-      //switch player
-    } else if (roll > 1 && roll < 5) {
-      //current score to 0
-      //switch player
-    } else if (roll === 5) {
-      //give all current score to enemy
-      //switch player
-    } else if (roll === 19) {
-      //take current score form enemy if enemy does not have enough put him in -
-    } else if (roll === 20) {
-      //update current score * 2 (NOT ROLL)
-    } else {
-      //update current score
-    }
-  };
-
+  const rollDice = () => Math.trunc(Math.random() * 20) + 1;
+  const switchPlayer = () => (currentPlayer = currentPlayer === 1 ? 2 : 1);
   const swapPlayer = function () {
-    currentPlayer = currentPlayer === 1 ? 2 : 1;
+    switchPlayer();
     document.querySelector('.player-1').classList.toggle('player-active');
     document.querySelector('.player-2').classList.toggle('player-active');
   };
@@ -41,28 +21,68 @@
   const displayScore = function (selector, player, score) {
     document.querySelector(`#${selector}-${player}-score`).textContent = score;
   };
-  //Event handlers
-  btnRoll.addEventListener('click', function () {
-    const roll = rollDice();
-    diceDisplay.textContent = roll;
+  const renderNewDisplay = function () {
+    displayScore('player', currentPlayer, score[`player${currentPlayer}`]);
+    displayScore('current', currentPlayer, currentScore);
+  };
+  const rollEvaluate = function (roll) {
     if (roll === 1) {
+      if (score[`player${currentPlayer}`] > 0)
+        score[`player${currentPlayer}`] = 0;
       currentScore = 0;
-      displayScore('current', currentPlayer, currentScore);
+      renderNewDisplay();
       swapPlayer();
+    } else if (roll > 1 && roll < 4) {
+      currentScore = 0;
+      renderNewDisplay();
+      swapPlayer();
+    } else if (roll === 5) {
+      switchPlayer();
+      const temp = currentScore <= 5 ? roll : currentScore;
+      score[`player${currentPlayer}`] += temp;
+      displayScore('current', currentPlayer, score[`player${currentPlayer}`]);
+      currentScore = 0;
+      switchPlayer();
+      renderNewDisplay();
+    } else if (roll === 19) {
+      //take current score form enemy if enemy does not have enough put him in -
+      switchPlayer();
+      const temp = currentScore <= roll ? roll : currentScore;
+      score[`player${currentPlayer}`] -= temp;
+      displayScore('player', currentPlayer, score[`player${currentPlayer}`]);
+      switchPlayer();
+      currentScore += roll;
+      displayScore('current', currentPlayer, currentScore);
+    } else if (roll === 20) {
+      if (currentScore < 10) {
+        currentScore += 20;
+      } else {
+        currentScore *= 2;
+      }
+
+      displayScore('current', currentPlayer, currentScore);
     } else {
       currentScore += roll;
       displayScore('current', currentPlayer, currentScore);
     }
+  };
+  //Event handlers
+  btnRoll.addEventListener('click', function () {
+    const roll = rollDice();
+    diceDisplay.textContent = roll;
+    rollEvaluate(roll);
   });
 
   btnHold.addEventListener('click', function () {
     score[`player${currentPlayer}`] += currentScore;
     displayScore('player', currentPlayer, score[`player${currentPlayer}`]);
-    if (score[`player${currentPlayer}`] >= 20) {
+    if (score[`player${currentPlayer}`] >= 500) {
       document.querySelector('.player-active h2').textContent = 'VICTORY';
       return;
     }
     currentScore = 0;
     swapPlayer();
   });
+
+  btnNewGame.addEventListener('click', function () {});
 })();

@@ -37,9 +37,6 @@ main {
   display: flex;
 }
 /* player section */
-.player-active {
-  box-shadow: -0.3rem 0.5rem 5.5rem var(--red);
-}
 .player-wrapper {
   flex: 50%;
   display: flex;
@@ -48,6 +45,11 @@ main {
   align-items: center;
   color: var(--brown);
   border-radius: 10px;
+  opacity: 0.75;
+}
+.player-active {
+  box-shadow: -0.3rem 0.5rem 5.5rem var(--red);
+  opacity: 1;
 }
 .player-name {
   font-size: 3rem;
