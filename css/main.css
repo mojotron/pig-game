@@ -112,6 +112,52 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 10rem;
-  color: var(--brown);
+  font-size: 2rem;
+  color: #000;
+  background: url('../d20-icon-15.jpg');
+  background-size: cover;
+  /* background-color: var(--brown);
+  border-radius: 100%; */
+  opacity: 0.9;
+}
+
+.bounce-1 {
+  animation-name: bounce-1;
+  animation-duration: 1s;
+}
+.bounce-2 {
+  animation-name: bounce-2;
+  animation-duration: 1s;
+}
+
+@keyframes bounce-1 {
+  0% {
+    top: 0px;
+  }
+  50% {
+    top: 50%;
+  }
+  75% {
+    top: 40%;
+  }
+  100% {
+    top: 50%;
+  }
+}
+@keyframes bounce-2 {
+  0% {
+    top: 0px;
+  }
+  50% {
+    top: 50%;
+  }
+  75% {
+    top: 40%;
+  }
+  100% {
+    top: 50%;
+  }
+}
+.none {
+  display: none;
 }

@@ -67,8 +67,18 @@
   };
   //Event handlers
   btnRoll.addEventListener('click', function () {
+    const x = document.querySelector('.dice-effect');
+    x.classList.add('none');
+    if (x.classList.contains('bounce-1')) {
+      x.classList.remove('bounce-1');
+      x.classList.add('bounce-2');
+    } else {
+      x.classList.remove('bounce-2');
+      x.classList.add('bounce-1');
+    }
     const roll = rollDice();
     diceDisplay.textContent = roll;
+    x.classList.remove('none');
     rollEvaluate(roll);
   });
 
