@@ -12,9 +12,8 @@
   <body>
     <header>
       <h1>The game of Pig, with DnD twist</h1>
-      <p>first player gets 500 points wins</p>
+      <button class="btn btn-rules">Rules<span>&triangledown;</span></button>
     </header>
-
     <main>
       <section class="player-wrapper player-1 player-active">
         <h2 class="player-name">Player 1 Total</h2>
@@ -43,6 +42,44 @@
       <button class="btn btn-new-game">New Game</button>
       <button class="btn btn-roll">Roll</button>
       <button class="btn btn-hold">Hold</button>
+    </div>
+
+    <div class="rules-modal">
+      <ul>
+        <li>First player to reach 500 points win the game!</li>
+        <li>
+          Roll the 20 sided dice, value from the roll will be added to your
+          current score. But sone values have special rules.
+        </li>
+        <li>Hold button, takes you current score and add it to your score.</li>
+        <li>
+          If you roll 1, its critical fail, you lose all points and other player
+          has turn.
+        </li>
+        <li>Rolling 2, you loose current points, opponent turn to roll.</li>
+        <li>
+          Rolling 3 is a bad one, opponent takes your current score and increase
+          his/her score. And if that isnt enough you lose your turn. Bad bad
+          number!
+        </li>
+        <li>
+          This is if you ask me best value, you take current score from oponents
+          score and add it to your score. But you loose your current soce and
+          you still rolling.
+        </li>
+        <li>
+          Critical hit, your current score is doubled! Great time to press that
+          hold button.
+        </li>
+        <li>
+          Other numbers makes your current score bigger, don't wait to long for
+          pressing hold button.
+        </li>
+        <li>
+          Reset button, really you want explanation, ok ok, reset game and play
+          from beginning all score fields are 0 dah!
+        </li>
+      </ul>
     </div>
   </body>
 </html>
