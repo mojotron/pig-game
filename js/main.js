@@ -4,7 +4,10 @@
   const btnNewGame = document.querySelector('.btn-new-game');
   const btnRoll = document.querySelector('.btn-roll');
   const btnHold = document.querySelector('.btn-hold');
+  const btnRules = document.querySelector('.btn-rules');
   const diceDisplay = document.querySelector('#dice-display');
+  const rulesModal = document.querySelector('.rules-modal');
+  const rulesTriangle = document.querySelector('.triangle');
   //Game State
   const score = { player1: 0, player2: 0 };
   let curScore = 0;
@@ -66,9 +69,9 @@
     }
   };
   //Event handlers
-  btnRoll.addEventListener('click', function () {
+  const rollEngine = function () {
     const x = document.querySelector('.dice-effect');
-    x.classList.add('none');
+    x.classList.add('hidden');
     if (x.classList.contains('bounce-1')) {
       x.classList.remove('bounce-1');
       x.classList.add('bounce-2');
@@ -78,27 +81,59 @@
     }
     const roll = rollDice();
     diceDisplay.textContent = roll;
-    x.classList.remove('none');
+    x.classList.remove('hidden');
     rollEvaluate(roll);
-  });
+  };
 
-  btnHold.addEventListener('click', function () {
+  const holdEngine = function () {
     score[`player${curPlayer}`] += curScore;
     curScore = 0;
     updatePlayerDom();
     if (score[`player${curPlayer}`] >= 100) {
       document.querySelector('.player-active h2').textContent = 'VICTORY';
+      btnRoll.removeEventListener('click', rollEngine);
+      btnRoll.removeEventListener('click', holdEngine);
       return;
     }
     diceDisplay.textContent = '';
     swapPlayer();
+  };
+  //TODO 1
+  btnRoll.addEventListener('click', rollEngine);
+  btnHold.addEventListener('click', holdEngine);
+
+  const toggleRules = function () {
+    rulesModal.classList.toggle('hidden');
+    if (rulesTriangle.textContent === '▽') {
+      rulesTriangle.textContent = '△';
+    } else {
+      rulesTriangle.textContent = '▽';
+    }
+  };
+  btnNewGame.addEventListener('click', function () {
+    document.querySelector(
+      '.player-active h2'
+    ).textContent = `Player ${curPlayer} Total`;
+    score.player1 = 0;
+    score.player2 = 0;
+    curScore = 0;
+    curPlayer = 1;
+    displayScore('player', 1, 0);
+    displayScore('player', 2, 0);
+    displayScore('current', 1, 0);
+    displayScore('current', 2, 0);
+    document.querySelector('.dice-effect').classList.add('hidden');
+    document.querySelector('.player-1').classList.add('player-active');
+    document.querySelector('.player-2').classList.remove('player-active');
+    //TODO 1
+    btnRoll.addEventListener('click', rollEngine);
+    btnHold.addEventListener('click', holdEngine);
   });
 
-  btnNewGame.addEventListener('click', function () {});
-
-  //TODO
-  //dice effect and display
-  //reset button and logic
-  //rules or msg system
-  //victory msg
+  btnRules.addEventListener('click', toggleRules);
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !rulesModal.classList.contains('hidden')) {
+      toggleRules();
+    }
+  });
 })();

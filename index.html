@@ -12,7 +12,9 @@
   <body>
     <header>
       <h1>The game of Pig, with DnD twist</h1>
-      <button class="btn btn-rules">Rules<span>&triangledown;</span></button>
+      <button class="btn btn-rules">
+        Rules<span class="triangle">&bigtriangledown;</span>
+      </button>
     </header>
     <main>
       <section class="player-wrapper player-1 player-active">
@@ -34,7 +36,7 @@
       </section>
     </main>
 
-    <div class="dice-effect none">
+    <div class="dice-effect hidden">
       <p id="dice-display"></p>
     </div>
 
@@ -44,32 +46,37 @@
       <button class="btn btn-hold">Hold</button>
     </div>
 
-    <div class="rules-modal">
+    <div class="rules-modal hidden">
       <ul>
-        <li>First player to reach 500 points win the game!</li>
+        <li>First player to reach 100 points, wins the game!</li>
         <li>
-          Roll the 20 sided dice, value from the roll will be added to your
-          current score. But sone values have special rules.
+          Roll the 20 sided dice, roll value will be added to your current
+          score. But some values have special rules.
         </li>
-        <li>Hold button, takes you current score and add it to your score.</li>
         <li>
-          If you roll 1, its critical fail, you lose all points and other player
-          has turn.
+          Hold button, add your current score to your total score, then pass
+          turn to your opponent.
         </li>
-        <li>Rolling 2, you loose current points, opponent turn to roll.</li>
+        <li>
+          If you roll 1, its critical fail, you loose all your total points and
+          other player has turn.
+        </li>
+        <li>
+          Rolling 2, you loose current points, opponents turn to roll d20.
+        </li>
         <li>
           Rolling 3 is a bad one, opponent takes your current score and increase
-          his/her score. And if that isnt enough you lose your turn. Bad bad
+          his/her score. And if that isn't enough you lose your turn. Bad bad
           number!
         </li>
         <li>
-          This is if you ask me best value, you take current score from oponents
-          score and add it to your score. But you loose your current soce and
-          you still rolling.
+          19 coolest of them all, you take your current score from opponents
+          total score and add it to your total score. You are still rolling but
+          you loose current score. This roll can be game changer!
         </li>
         <li>
-          Critical hit, your current score is doubled! Great time to press that
-          hold button.
+          Natural 20 or critical hit, your current score is doubled! Great time
+          to press that hold button.
         </li>
         <li>
           Other numbers makes your current score bigger, don't wait to long for
