@@ -11,7 +11,8 @@
   </head>
   <body>
     <header>
-      <h1>The game of Pig, with DnD twist</h1>
+      <h1>The Game of Pig</h1>
+      <p>...with the DnD twist</p>
       <button class="btn btn-rules">
         Rules<span class="triangle">&bigtriangledown;</span>
       </button>
@@ -36,7 +37,7 @@
       </section>
     </main>
 
-    <div class="dice-effect hidden">
+    <div class="dice-effect hidden bounce-1">
       <p id="dice-display"></p>
     </div>
 
@@ -47,46 +48,42 @@
     </div>
 
     <div class="rules-modal hidden">
-      <ul>
-        <li>First player to reach 100 points, wins the game!</li>
-        <li>
-          Roll the 20 sided dice, roll value will be added to your current
-          score. But some values have special rules.
-        </li>
-        <li>
-          Hold button, add your current score to your total score, then pass
-          turn to your opponent.
-        </li>
-        <li>
-          If you roll 1, its critical fail, you loose all your total points and
-          other player has turn.
-        </li>
-        <li>
-          Rolling 2, you loose current points, opponents turn to roll d20.
-        </li>
-        <li>
-          Rolling 3 is a bad one, opponent takes your current score and increase
-          his/her score. And if that isn't enough you lose your turn. Bad bad
-          number!
-        </li>
-        <li>
-          19 coolest of them all, you take your current score from opponents
-          total score and add it to your total score. You are still rolling but
-          you loose current score. This roll can be game changer!
-        </li>
-        <li>
-          Natural 20 or critical hit, your current score is doubled! Great time
-          to press that hold button.
-        </li>
-        <li>
-          Other numbers makes your current score bigger, don't wait to long for
-          pressing hold button.
-        </li>
-        <li>
-          Reset button, really you want explanation, ok ok, reset game and play
-          from beginning all score fields are 0 dah!
-        </li>
-      </ul>
+      <p>First player to reach 100 points, wins the game!</p>
+      <p>
+        Roll the 20 sided dice, rolled value will be added to your current
+        score. But some values have special rules.
+      </p>
+      <p>
+        Hold button, add your current score to your total score, then pass turn
+        to your opponent.
+      </p>
+      <p>
+        If you roll 1, its critical fail, you loose all your total points and
+        other player is playing now.
+      </p>
+      <p>Rolling 2, you loose current points, opponents turn to roll.</p>
+      <p>
+        Rolling 3 is a bad one, opponent takes your current score and increase
+        his/her score. And if that isn't enough you lose your turn. Bad bad
+        number!
+      </p>
+      <p>
+        Value 19 is coolest of them all, you take your current score from
+        opponents total score and add it to your total score. You are still
+        rolling but you loose current score. This roll can be game changer!
+      </p>
+      <p>
+        Natural 20 or critical hit, your current score is doubled! Great time to
+        press that hold button.
+      </p>
+      <p>
+        Other numbers makes your current score bigger, don't wait to long for
+        pressing hold button.
+      </p>
+      <p>
+        Reset button, really you want explanation, ok ok, reset game and play
+        from beginning all score fields are set to 0, dah!
+      </p>
     </div>
   </body>
 </html>

@@ -3,8 +3,8 @@
   --red: #ec755e;
   --blue: #b6e6f4;
   --brown: #4d1820;
-  --purple: #89689f;
 }
+/* General Style */
 html {
   box-sizing: border-box;
   font-size: 16px;
@@ -17,14 +17,14 @@ body {
   flex-direction: column;
   background: linear-gradient(90deg, var(--brown), var(--blue), var(--brown));
 }
-/* HEADER */
+/* Header Style */
 header {
   height: 25%;
   color: var(--brown);
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
 }
 h1 {
   font-size: 3rem;
@@ -33,13 +33,18 @@ h1 {
   text-shadow: 0 -1rem 0.5rem var(--brown);
   padding-top: 20px;
 }
+header p {
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: 0.3rem;
+}
+/* Game UI */
 main {
   height: 55%;
   width: 70%;
   margin: 0 auto;
   display: flex;
 }
-/* player section */
 .player-wrapper {
   flex: 50%;
   display: flex;
@@ -77,6 +82,7 @@ main {
 .player-current-score {
   font-size: 2rem;
 }
+/* Player Commands - Game buttons */
 .commands {
   height: 20%;
   display: flex;
@@ -101,7 +107,7 @@ main {
   transform: translateY(3px);
   opacity: 0.9;
 }
-
+/* Bouncing dice */
 .dice-effect {
   height: 8rem;
   width: 8rem;
@@ -116,11 +122,9 @@ main {
   color: #000;
   background: url('../d20-icon-15.jpg');
   background-size: cover;
-  /* background-color: var(--brown);
-  border-radius: 100%; */
   opacity: 0.9;
 }
-
+/* Dice animations */
 .bounce-1 {
   animation-name: bounce-1;
   animation-duration: 1s;
@@ -129,7 +133,6 @@ main {
   animation-name: bounce-2;
   animation-duration: 1s;
 }
-
 @keyframes bounce-1 {
   0% {
     top: 0px;
@@ -158,14 +161,7 @@ main {
     top: 50%;
   }
 }
-.hidden {
-  display: none;
-}
-.combat-log {
-  font-size: 1.6rem;
-  font-weight: 100;
-  letter-spacing: 0.2rem;
-}
+/*Rules Modal Window and button*/
 .btn-rules {
   font-size: 1rem;
   width: 7rem;
@@ -180,7 +176,7 @@ main {
 }
 .rules-modal {
   position: absolute;
-  padding: 0.7rem 0.5rem;
+  padding: 1rem 0.7rem;
   top: 4.9rem;
   right: 1rem;
   width: 25%;
@@ -188,10 +184,18 @@ main {
   background-color: var(--red);
   color: var(--brown);
   overflow-y: scroll;
-  opacity: 0.85;
+  opacity: 0.75;
 }
-.rules-modal li {
+.rules-modal p {
   margin-bottom: 0.7rem;
   padding-bottom: 0.3rem;
-  border-bottom: 0.05rem dotted var(--blue);
+}
+.rules-modal p::first-letter {
+  color: var(--blue);
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-shadow: 0.2rem -0.2rem 0.2rem var(--brown);
+}
+.hidden {
+  display: none;
 }
