@@ -5,7 +5,6 @@
   const btnRoll = document.querySelector('.btn-roll');
   const btnHold = document.querySelector('.btn-hold');
   const btnRules = document.querySelector('.btn-rules');
-
   const diceDisplay = document.querySelector('#dice-display');
   const rulesModal = document.querySelector('.rules-modal');
   const rulesTriangle = document.querySelector('.triangle');
@@ -56,7 +55,7 @@
       switchPlayer();
       lostRoundUpdate();
     } else if (roll === 19) {
-      const tempScore = curScore <= roll ? roll : curScore;
+      const tempScore = curScore;
       curScore = 0;
       switchPlayer();
       score[`player${curPlayer}`] -= tempScore;
@@ -72,6 +71,7 @@
       updatePlayerDom(curPlayer);
     }
   };
+
   const swapBounceClasses = function () {
     if (bounce.classList.contains('bounce-1')) {
       bounce.classList.remove('bounce-1');
@@ -83,12 +83,10 @@
   };
   //Event handlers
   const rollEngine = function () {
+    const roll = rollDice();
+    diceDisplay.textContent = roll;
     bounce.classList.remove('hidden');
     swapBounceClasses();
-    const roll = rollDice();
-    console.log(roll);
-    diceDisplay.textContent = roll;
-
     rollEvaluate(roll);
   };
 
@@ -131,7 +129,7 @@
     ).textContent = `Player ${curPlayer} Total`;
   };
   initNewGame();
-
+  //Event listeners
   btnNewGame.addEventListener('click', initNewGame);
   btnRules.addEventListener('click', toggleRules);
   window.addEventListener('keydown', function (e) {
