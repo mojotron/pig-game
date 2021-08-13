@@ -40,7 +40,7 @@
     displayScore('player', player, score[`player${player}`]);
     displayScore('current', player, curScore);
   };
-
+  //Main game logic
   const rollEvaluate = function (roll) {
     if (roll === 1) {
       if (score[`player${curPlayer}`] > 0) score[`player${curPlayer}`] = 0;
@@ -71,7 +71,7 @@
       updatePlayerDom(curPlayer);
     }
   };
-
+  //Swapping classes to apply bounce effect on every roll
   const swapBounceClasses = function () {
     if (bounce.classList.contains('bounce-1')) {
       bounce.classList.remove('bounce-1');
@@ -114,6 +114,12 @@
     }
   };
 
+  const closeModalWithEscape = function (event) {
+    if (event.key === 'Escape' && !rulesModal.classList.contains('hidden')) {
+      toggleRules();
+    }
+  };
+  //Initialize new game, setting variables to start position
   const initNewGame = function () {
     score.player1 = score.player2 = curScore = 0;
     curPlayer = 1;
@@ -128,13 +134,10 @@
       '.player-active h2'
     ).textContent = `Player ${curPlayer} Total`;
   };
+  //START GAME on page load
   initNewGame();
   //Event listeners
   btnNewGame.addEventListener('click', initNewGame);
   btnRules.addEventListener('click', toggleRules);
-  window.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && !rulesModal.classList.contains('hidden')) {
-      toggleRules();
-    }
-  });
+  window.addEventListener('keydown', closeModalWithEscape);
 })();

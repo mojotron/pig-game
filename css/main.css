@@ -120,7 +120,7 @@ main {
   align-items: center;
   font-size: 2rem;
   color: #000;
-  background: url('../d20-icon-15.jpg');
+  background: url('../images/d20-icon.jpg');
   background-size: cover;
   opacity: 0.9;
 }
@@ -198,4 +198,31 @@ main {
 }
 .hidden {
   display: none;
+}
+
+@media (max-width: 786px) {
+  html {
+    font-size: 12px;
+  }
+  main {
+    width: 96%;
+  }
+  .btn {
+    padding: 0.7rem 1.5rem;
+  }
+  .btn-rules {
+    width: 6rem;
+    top: 0.3rem;
+    right: 0;
+  }
+  .rules-modal {
+    padding: 1rem 0.7rem;
+    top: 3.1rem;
+    right: 0;
+    width: 50%;
+    opacity: 0.9;
+  }
+  .rules-modal p {
+    font-size: 1.2rem;
+  }
 }
